@@ -16,9 +16,9 @@ function createNewPromise(event) {
   setTimeout(() => {
     let promise = new Promise((resolve, reject) => {
       if (radioValue === 'fulfilled') {
-        resolve(`Fulfilled promise in ${delay}ms`);
+        resolve(delay);
       } else if (radioValue === 'rejected') {
-        reject(`Rejected promise in ${delay}ms`);
+        reject(delay);
       }
     });
 
@@ -26,7 +26,7 @@ function createNewPromise(event) {
       .then(message => {
         iziToast.success({
           title: '✅',
-          message: message,
+          message: `Fulfilled promise in ${message}ms`,
           position: 'topRight',
           timeout: 3000,
           transitionIn: 'fadeInLeft',
@@ -36,7 +36,7 @@ function createNewPromise(event) {
       .catch(error => {
         iziToast.error({
           title: '❌',
-          message: error,
+          message: `Rejected promise in ${error}ms`,
           position: 'topRight',
           timeout: 3000,
           transitionIn: 'fadeInLeft',
